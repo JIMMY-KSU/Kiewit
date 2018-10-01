@@ -5,10 +5,10 @@ Kiewit Steam Blow Calculation Software
 - Nate
 - Alan
 - Ali
--Fahad
+- Fahad
 
 
-## Directyories
+## Directories
 
 - inputs: 
 - outputs:
@@ -26,7 +26,7 @@ All analysis was performed with Anaconda.  Selected dependencies include:
  - seaborn                   0.8.1            py36hfad7ec4_0
  - MS Excel
  - Fluids.py
- -   
+
 
 
 
