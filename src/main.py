@@ -11,6 +11,27 @@ Created on Wed Oct  3 13:19:33 2018
 
 #import make_calculations
 
+import pandas as pd
+import numpy as np
+
+def read_heat_balance(excelfilename,case=None):
+    # load the spreadsheet
+    df = pd.read_excel(excelfilename)
+    # replace nan with blanks
+    df = df.replace(np.nan, '')
+    # rename indexes to the rel indexes
+    df = df.set_index('Unnamed: 1')
+    # rename columns to the case name
+    df = df.rename(columns=df.loc["Case Name",:])
+    # Build a global dictionary for all cases
+    Dict = df.to_dict()
+    # extracts the required case and build case dictionary
+    DictCase = []
+    if case is not None:    
+        DictCase = Dict[case]
+    
+    return df,Dict,DictCase
+    
 def read_user_inputs(P = 1e5 ,T = 300):
     '''
     Describe
@@ -42,9 +63,11 @@ def make_outputs():
 
 
 if __name__ == '__main__':
+    df = read_heat_balance("..\inputs\mcInput_hb5.0_hb.xlsx")
+    df,Dict,DictCase = read_heat_balance("..\inputs\mcInput_hb5.0_hb.xlsx","Case S-025-G")
     
-    x,y = read_user_inputs(2e5,300)
-    m,n = read_pipe_data('/home/mgabdo/ME575/Kiewit/inputs/pipedata/foo.txt')
-    tbl = read_arrow_tables('/loc/of/tables/spitted/by/arrow')
+    #x,y = read_user_inputs(2e5,300)
+    #m,n = read_pipe_data('/home/mgabdo/ME575/Kiewit/inputs/pipedata/foo.txt')
+    #tbl = read_arrow_tables('/loc/of/tables/spitted/by/arrow')
     #make_calculationes(x,y,m,n,tbl)
-    make_outputs()
+    #make_outputs()
