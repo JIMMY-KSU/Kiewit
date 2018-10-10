@@ -1,5 +1,5 @@
 import unittest
-#from structure_of_scripts import do_something
+from structure_of_scripts import do_something
 
 class Test_dosomething_fn(unittest.TestCase):
     
