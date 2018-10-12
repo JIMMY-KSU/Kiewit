@@ -51,6 +51,16 @@ def read_arrow_tables(filename):
     '''
     Describe
     '''
+    # load the spreadsheet
+    ad = pd.read_excel('Arrow Data.xlsx')
+    # replace nan with blanks
+    ad = df.replace(np.nan, '')
+    # rename indexes to the Pipe names
+    ad = df.set_index('Pipe')
+    # Build a global dictionary for pipe information
+    ADict = ad.to_dict()
+    
+    return ad,ADict
     pass
 
 def make_outputs():
