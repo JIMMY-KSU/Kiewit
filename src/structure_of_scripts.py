@@ -42,5 +42,5 @@ def do_something(x): # This is how you define a function, do not forget the colo
         return a*x
      
 if __name__ == '__main__':
-    do_something(111)
-    #print(do_something(245))
+    out = do_something(111)
+    print(do_something(245))
